@@ -13,7 +13,7 @@
 	"author": "gensha256",
 	"license": "MIT",
 	"dependencies": {
-		"express": "4.17.3"
+		"express": "4.18.0"
 	},
 	"devDependencies": {
 		"eslint": "8.9.0",
