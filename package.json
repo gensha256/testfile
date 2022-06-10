@@ -1,23 +1,25 @@
 {
-	"name": "@gensha256/testgit",
-	"version": "0.0.1",
-	"description": "Test for git CLI",
-	"main": "index.js",
-	"scripts": {
-		"format:check": "prettier --check .",
-		"format:write": "prettier --write .",
-		"lint:check": "eslint .",
-		"lint:fix": "eslint --fix .",
-		"start": "node index.js"
-	},
-	"author": "gensha256",
-	"license": "MIT",
-	"dependencies": {
-		"express": "4.17.3"
-	},
-	"devDependencies": {
-		"eslint": "8.9.0",
-		"eslint-config-prettier": "8.4.0",
-		"prettier": "2.5.1"
-	}
+  "name": "@gensha256/testgit",
+  "version": "0.0.1",
+  "description": "Test for git CLI",
+  "main": "index.js",
+  "scripts": {
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "start": "node index.js"
+  },
+  "author": "gensha256",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.3",
+    "global": "^4.4.0",
+    "some-module": "0.0.3"
+  },
+  "devDependencies": {
+    "eslint": "8.9.0",
+    "eslint-config-prettier": "8.4.0",
+    "prettier": "2.5.1"
+  }
 }
