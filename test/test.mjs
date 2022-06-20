@@ -1,18 +1,16 @@
 import fs from "fs";
 
-import { evalFilesInDir } from "../src/jsfiles/index.mjs";
+import { evalFilesInDir, TYPE_DIR, TYPE_FILE } from "../src/jsfiles/index.mjs";
 
 const dirForTest = "/home/gen/projects/testfile/tmp/";
 
 if (fs.existsSync(dirForTest)) {
-
-  fs.rmdir(dirForTest, (err) => {
-    if (err) {
-      throw err;
-    }
-  });
+  fs.rmSync(dirForTest, { recursive: true, force: true });
 }
 
+if (fs.existsSync(dirForTest)) {
+  throw new Error("tmp dir not deleted.")
+}
 
 fs.mkdir(dirForTest, (err) => {
   if (err) {
@@ -50,4 +48,6 @@ fs.mkdir(dirForTest + "dir1", (err) => {
   }
 });
 
-evalFilesInDir(dirForTest);
+const files = evalFilesInDir(dirForTest);
+
+console.log(files)
