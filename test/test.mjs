@@ -1,6 +1,6 @@
 import { evalFilesInDir} from "../src/jsfiles/index.mjs";
 
-const dirForTest = "/home/gen/projects/testfile/src";
+const dirForTest = "/home/gen/projects/testfile";
 
 const files = evalFilesInDir(dirForTest);
 

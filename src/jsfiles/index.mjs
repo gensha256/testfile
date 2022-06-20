@@ -28,7 +28,7 @@ function evalFilesInDir(dirPath) {
       path: dirPath + '/' + files[i],
     };
 
-    if (fs.lstatSync(itemFile.path).isFile()) {
+    if (fs.lstatSync(itemFile.path).isFile() || fs.lstatSync(itemFile.path).isSymbolicLink()) {
       itemFile.type = TYPE_FILE;
       itemFile.size = fs.statSync(itemFile.path).size;
     } else {
