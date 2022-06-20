@@ -1,8 +1,8 @@
-const fs = require("fs");
+import fs from "fs";
 
-const { evalFilesInDir } = require("../files/file");
+import { evalFilesInDir } from "../src/jsfiles/index.mjs";
 
-const dirForTest = "/home/gen/projects/testfile/tmp";
+const dirForTest = "/home/gen/projects/testfile/tmp/";
 
 if (fs.existsSync(dirForTest)) {
 
@@ -14,42 +14,35 @@ if (fs.existsSync(dirForTest)) {
 }
 
 
-fs.mkdir("/home/gen/projects/testfile/test", (err) => {
+fs.mkdir(dirForTest, (err) => {
   if (err) {
     throw err;
   } else
     console.log("Directory  created");
 });
 
-fs.writeFileSync("testing.txt", "", (err) => {
+fs.writeFileSync(dirForTest + "file1.txt", "Testing new function ", (err) => {
   if (err) {
     throw err;
   }
   console.log("File created successfully");
 });
 
-fs.writeFileSync("main.js", "", (err) => {
+fs.writeFileSync(dirForTest + "file2.txt", "Hello", (err) => {
   if (err) {
     throw err;
   }
   console.log("File created successfully");
 });
 
-fs.writeFileSync("app.css", "", (err) => {
+fs.writeFileSync(dirForTest + "file3.txt", "Created object", (err) => {
   if (err) {
     throw err;
   }
   console.log("File created successfully");
 });
 
-fs.writeFileSync("index.html", "", (err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("File created successfully");
-});
-
-fs.mkdir("Files", (err) => {
+fs.mkdir(dirForTest + "dir1", (err) => {
   if (err) {
     throw err;
   } else {
