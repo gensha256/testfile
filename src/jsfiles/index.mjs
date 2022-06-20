@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 
 const TYPE_FILE = "file";
 const TYPE_DIR = "dir";
@@ -9,26 +10,36 @@ function evalFilesInDir(dirPath) {
     throw new Error("dirPath param is not directory.");
   }
 
+  let resultFile = {
+    name: path.basename(dirPath),
+    path: dirPath,
+    type: TYPE_DIR,
+    size: 0,
+    sySize: fs.statSync(dirPath).size,
+    files: []
+  }
+
   const files = fs.readdirSync(dirPath);
 
-  const resulList = [];
-  files.forEach((item) => {
+  for (let i = 0; i < files.length; i++) {
 
-    const info = {
-      name: item,
-      path: dirPath + item
+    let itemFile = {
+      name: files[i],
+      path: dirPath + '/' + files[i],
     };
 
-    if (fs.lstatSync(info.path).isFile()) {
-      info.type = TYPE_FILE;
+    if (fs.lstatSync(itemFile.path).isFile()) {
+      itemFile.type = TYPE_FILE;
+      itemFile.size = fs.statSync(itemFile.path).size;
     } else {
-      info.type = TYPE_DIR;
+      itemFile = evalFilesInDir(itemFile.path)
     }
+    resultFile.size += itemFile.size;
 
-    resulList.push(info);
-  });
+    resultFile.files.push(itemFile);
+  }
 
-  return resulList;
+  return resultFile;
 }
 
 export { evalFilesInDir, TYPE_DIR, TYPE_FILE };
