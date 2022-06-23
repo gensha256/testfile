@@ -1,7 +1,11 @@
-import { evalFilesInDir} from "../src/jsfiles/index.mjs";
+import {evalFilesInDir, TYPE_DIR, TYPE_FILE} from "../src/jsfiles/index.mjs";
+import {request} from "express";
 
-const dirForTest = "/home/gen/projects/testfile";
+const dirForTest = "/home/gen/projects";
 
-const files = evalFilesInDir(dirForTest);
+const dirInfo = evalFilesInDir(dirForTest);
 
-console.log(files)
+export {dirInfo}
+
+console.log(dirInfo)
+
