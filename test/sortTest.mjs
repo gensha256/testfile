@@ -1,4 +1,5 @@
 const testData = [1, -2, 3, 2, 2, 3, 100, 5, 4, 70, 3.16];
+import {dirInfo} from "./test.mjs";
 
 function isSorted(arr) {
 
@@ -50,3 +51,32 @@ function sort(array) {
 const sortedArray = sort(testData);
 console.log(sortedArray);
 console.log("sorted ? : " + isSorted(sortedArray));
+
+
+
+const knowObjects = new Map();
+const generate = function*() {
+    while (true) {
+        const random = Math.random()
+            .toString(16)
+            .slice(2, 8);
+        yield `0x${random}`;
+    }
+};
+const generator = generate();
+
+const refs = {};
+
+const findRef = object => {
+    let address;
+    if (knowObjects.has(object)) {
+        address = knowObjects.get(object);
+    } else {
+        address = generator.next().value;
+        knowObjects.set(object, address);
+        refs[address] = object;
+    }
+    return address;
+};
+const references = [dirInfo].map(p => findRef(p));
+console.log(references);

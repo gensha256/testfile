@@ -39,6 +39,7 @@ function evalFilesInDir(dirPath) {
 
         resultFile.files.push(itemFile);
     }
+
     return resultFile;
 }
 
