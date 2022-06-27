@@ -1,3 +1,5 @@
+import {TYPE_DIR} from "./files.mjs";
+
 function isSorted(dirObject) {
 
     for (let pointer = 1; pointer < dirObject.files.length - 1; pointer++) {
@@ -32,7 +34,12 @@ function sortFilesInDir(dirObject) {
         }
         sort = isSorted(dirObject);
     }
-    return dirObject.files;
+
+    for (let pointer = 0; pointer < dirObject.files.length; pointer++) {
+        if(dirObject.files[pointer].type === TYPE_DIR && dirObject.files[pointer].files.length > 1) {
+            sortFilesInDir(dirObject.files[pointer]);
+        }
+    }
 }
 
 export {sortFilesInDir};
