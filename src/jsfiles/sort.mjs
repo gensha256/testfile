@@ -1,14 +1,12 @@
-import {dirInfo} from "../../test/test.mjs";
-import fs from 'fs'
+function isSorted(dirObject) {
 
-function isSorted( dir ) {
-    for (let pointer = 1; pointer < dir.length - 1; pointer++) {
+    for (let pointer = 1; pointer < dirObject.files.length - 1; pointer++) {
 
-        let element = dir.files[pointer];
-        let previous = dir.files[pointer - 1];
-        let next = dir.files[pointer + 1];
+        let element = dirObject.files[pointer];
+        let previous = dirObject.files[pointer - 1];
+        let next = dirObject.files[pointer + 1];
 
-        if (element < previous && element > next) {
+        if (element.size < previous.size || element.size > next.size) {
             return false;
         }
     }
@@ -16,25 +14,25 @@ function isSorted( dir ) {
     return true;
 }
 
+function sortFilesInDir(dirObject) {
 
-function sortFilesInDir(dir) {
-
-    let sort = isSorted(dir);
+    let sort = isSorted(dirObject);
 
     while (!sort) {
 
-        for (let pointer = 0; pointer < dir.files.length; pointer++) {
+        for (let pointer = 0; pointer < dirObject.files.length - 1; pointer++) {
 
-            let current = dir.files[pointer];
-            let next = dir.files[pointer + 1];
+            let current = dirObject.files[pointer];
+            let next = dirObject.files[pointer + 1];
 
             if (current.size > next.size) {
-                dir.files[pointer] = next;
-                dir.files[pointer + 1] = current;
+                dirObject.files[pointer] = next;
+                dirObject.files[pointer + 1] = current;
             }
         }
-        sort = isSorted(dir);
+        sort = isSorted(dirObject);
     }
+    return dirObject.files;
 }
 
-sortFilesInDir(dirInfo);
+export {sortFilesInDir};

@@ -1,5 +1,6 @@
 import express from 'express';
-import {evalFilesInDir} from "./src/jsfiles/index.mjs";
+import {evalFilesInDir} from "./src/jsfiles/files.mjs";
+import {sortFilesInDir} from "./src/jsfiles/sort.mjs";
 
 const app = express();
 const port = 3000;
@@ -7,8 +8,8 @@ const port = 3000;
 function proceedFiles(dir) {
 
     try {
-
         const resultFile = evalFilesInDir(dir);
+        sortFilesInDir(resultFile);
         return {result: resultFile};
     }
     catch (err) {

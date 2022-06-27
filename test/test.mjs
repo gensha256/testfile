@@ -1,6 +1,6 @@
-import {evalFilesInDir, TYPE_DIR, TYPE_FILE} from "../src/jsfiles/index.mjs";
+import {evalFilesInDir, TYPE_DIR, TYPE_FILE} from "../src/jsfiles/files.mjs";
 
-const dirForTest = "/home/gen/projects/testfile/test";
+const dirForTest = "/home/gen/projects/testgit";
 
 const dirInfo = evalFilesInDir(dirForTest);
 
