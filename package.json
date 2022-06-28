@@ -4,10 +4,8 @@
   "author": "gensha256",
   "license": "MIT",
   "description": "Test for git CLI",
-
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
@@ -15,16 +13,13 @@
     "lint:fix": "eslint --fix .",
     "start": "node index.js"
   },
-
-  "engines" : {
-    "npm" : ">=8.11.0",
-    "node" : ">=16.15.0"
+  "engines": {
+    "npm": ">=8.11.0",
+    "node": ">=16.15.0"
   },
-
   "dependencies": {
     "express": "4.18.1"
   },
-
   "devDependencies": {
     "eslint": "8.18.0",
     "eslint-config-prettier": "8.4.0",

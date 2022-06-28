@@ -1,8 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const TYPE_FILE = "file";
-const TYPE_DIR = "dir";
+const FILETYPE = {
+    FILE: 0,
+    DIR: 1
+}
 
 function evalFilesInDir(dirPath) {
 
@@ -13,7 +15,7 @@ function evalFilesInDir(dirPath) {
     let resultFile = {
         name: path.basename(dirPath),
         path: dirPath,
-        type: TYPE_DIR,
+        type: FILETYPE.DIR,
         size: 0,
         sySize: fs.statSync(dirPath).size,
         files: []
@@ -30,7 +32,7 @@ function evalFilesInDir(dirPath) {
         };
 
         if (fs.lstatSync(itemFile.path).isFile() || fs.lstatSync(itemFile.path).isSymbolicLink()) {
-            itemFile.type = TYPE_FILE;
+            itemFile.type = FILETYPE.FILE;
             itemFile.size = fs.statSync(itemFile.path).size;
         } else {
             itemFile = evalFilesInDir(itemFile.path)
@@ -43,4 +45,4 @@ function evalFilesInDir(dirPath) {
     return resultFile;
 }
 
-export {evalFilesInDir, TYPE_DIR, TYPE_FILE};
+export {evalFilesInDir, FILETYPE};

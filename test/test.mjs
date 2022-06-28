@@ -1,4 +1,4 @@
-import {evalFilesInDir, TYPE_DIR, TYPE_FILE} from "../src/jsfiles/files.mjs";
+import {evalFilesInDir, FILETYPE} from "../src/jsfiles/files.mjs";
 
 const dirForTest = "/home/gen/projects/testgit";
 
