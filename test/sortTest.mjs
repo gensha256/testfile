@@ -1,3 +1,5 @@
+import {FILETYPE} from "../src/jsfiles/files.mjs";
+
 const testData = [1, -2, 3, 2, 2, 3, 100, 5, 4, 70, 3.16];
 import {dirInfo} from "./test.mjs";
 
@@ -53,9 +55,8 @@ console.log(sortedArray);
 console.log("sorted ? : " + isSorted(sortedArray));
 
 
-
 const knowObjects = new Map();
-const generate = function*() {
+const generate = function* () {
     while (true) {
         const random = Math.random()
             .toString(16)
@@ -80,3 +81,5 @@ const findRef = object => {
 };
 const references = [dirInfo].map(p => findRef(p));
 console.log(references);
+
+
