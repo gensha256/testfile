@@ -13,11 +13,13 @@ const mapExample = {
     "age":20
 }
 
-console.log(mapExample);
+// console.log(mapExample);
 
 const objectExample = new Object({
     name : "Anna",
     age : 30
 })
 
-console.log(objectExample);
+// console.log(objectExample);
+
+

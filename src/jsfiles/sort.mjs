@@ -16,7 +16,9 @@ function isSorted(dirObject) {
     return true;
 }
 
+
 function sortFilesInDir(dirObject) {
+
 
     let sort = isSorted(dirObject);
 
@@ -28,6 +30,7 @@ function sortFilesInDir(dirObject) {
             let next = dirObject.files[pointer + 1];
 
             if (current.size > next.size) {
+
                 dirObject.files[pointer] = next;
                 dirObject.files[pointer + 1] = current;
             }
@@ -43,15 +46,19 @@ function sortFilesInDir(dirObject) {
         }
     }
 
-    for (let point = 0; point < dirObject.files.length - 1; point++) {
 
-        let curr = dirObject.files[point];
-        let next = dirObject.files[point + 1];
+    for (let point = 0; point < dirObject.files.length; point++) {
 
-        if (curr.type < next.type) {
+        for (let pointer = 0; pointer < dirObject.files.length - 1 - point; pointer++) {
 
-            dirObject.files[point] = next;
-            dirObject.files[point + 1] = curr;
+            let curr = dirObject.files[pointer];
+            let next = dirObject.files[pointer + 1];
+
+            if (curr.type > next.type) {
+
+                dirObject.files[pointer] = next;
+                dirObject.files[pointer + 1] = curr;
+            }
         }
     }
 }
