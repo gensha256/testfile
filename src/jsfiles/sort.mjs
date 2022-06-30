@@ -16,9 +16,7 @@ function isSorted(dirObject) {
     return true;
 }
 
-
 function sortFilesInDir(dirObject) {
-
 
     let sort = isSorted(dirObject);
 
@@ -45,7 +43,6 @@ function sortFilesInDir(dirObject) {
             sortFilesInDir(dirObject.files[pointer]);
         }
     }
-
 
     for (let point = 0; point < dirObject.files.length; point++) {
 
